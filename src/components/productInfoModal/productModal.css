@@ -1,0 +1,148 @@
+.single__modal{
+    position: fixed;
+    /* background-color: rgba(0, 0, 0, 0.459); */
+    background-color: rgba(96, 99, 99, 0.733);
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    top:0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition:  all 500ms ease;
+}
+
+.single__modal.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+.single__icon{
+    position: absolute;
+    color: #c7c3c3;
+    font-size: 3.5rem;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.single__content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 25px 15px;
+    flex-wrap: wrap;
+    background-color: #2e2b2bf1;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(146, 142, 142, 0.61);
+}
+
+.column{
+    flex: 1 1 160px;
+}
+
+
+.single__column-rigth{
+    flex: 0 1 180px;
+}
+
+.single__img{
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.single__category{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.single__title, .single__price{
+    font-size: 2.3rem;
+    font-weight: 300;
+}
+
+.single__description{
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #f8f9fac4;
+}
+
+.single__info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.single__buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.single__buttons .items__btn-add{
+    border: 1px solid #f8f9fa1c;
+}
+
+
+
+@media(min-width:750px){
+    .single{
+        gap: 100px;
+    }
+
+    .single__content{
+        gap: 50px;
+    }
+
+    .single__column-rigth{
+        flex: 0 1 330px;
+    }
+
+    .single__img{
+        height: 500px;
+    }
+
+    .single__category{
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .single__title, .single__price{
+        font-size: 3.6rem;
+    }
+    
+    .single__description{
+        font-size: 2rem;
+    }
+
+    .single__info{
+        gap: 35px;
+    }
+
+    .single__description{
+        font-size: 2rem;
+        line-height: 1.6;
+    }
+
+    .single__buttons{
+        justify-content: flex-start;
+    }
+
+    .single__buttons{
+        margin-top: 30px;
+    }
+}
+
+@media(min-width:1200px){
+    /* redusco columnas su tamaño y que ya no ocupen todo el tamaño */
+    .column {
+        flex: 0 1 477px;
+    }
+}

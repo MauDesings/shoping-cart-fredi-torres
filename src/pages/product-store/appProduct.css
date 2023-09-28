@@ -1,0 +1,13 @@
+.items-content-grid{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 20px;
+}
+
+
+.items__description{
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+} 
