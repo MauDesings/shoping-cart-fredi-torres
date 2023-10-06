@@ -5,7 +5,7 @@ import product from '../mocks/product.json';
 const AppContext = createContext();
 
 const AppProvider = ({children}) => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState( {productData:[], featureProducts: []} );
     const [isLoading, setIsLoading] = useState(true);
 
     function productPromise(apimonck) {
@@ -17,10 +17,12 @@ const AppProvider = ({children}) => {
         async function getProducts(product) {
             try {
                 const response = await productPromise(product);
-                setData(response);
+                const featureData = response.filter(item=> item.featured === true)
+                setData((prev)=> ({...prev, productData: response}));
+                setData((prev)=> ({...prev, featureProducts: featureData}));
                 setIsLoading(!isLoading);
             } catch (error) {
-                
+                console.log(error);
             }
         }
         getProducts(product);
@@ -29,14 +31,14 @@ const AppProvider = ({children}) => {
 
     // Obtener los datos unicos (categorias)
     function getUniqueData(products, property) {
-        let newValue = products.map(item => item[property])
+        let newValue = products.productData.map(item => item[property])
         return (newValue = [...new Set(newValue)]);
     }
     const categoryOnlyData = getUniqueData(data, 'category');  
 
 
   return (
-    <AppContext.Provider value={{data,isLoading, categoryOnlyData}}>
+    <AppContext.Provider value={{ data, isLoading, categoryOnlyData }}>
         {children}
     </AppContext.Provider>
   )
@@ -44,6 +46,6 @@ const AppProvider = ({children}) => {
 
 // custon hook
 const useProductContext = () => useContext(AppContext);
-export {AppProvider,AppContext,useProductContext};
+export { AppProvider, AppContext, useProductContext };
 
 

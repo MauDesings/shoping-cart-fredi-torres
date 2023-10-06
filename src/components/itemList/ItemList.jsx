@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import ProductModal from '../productInfoModal/ProductModal';
+import { useCartContext } from '../../context/CartContext';
 import './items.css'
 
 
 const ItemList = (item) => {
     const [open, setOpen] = useState(false);
-    const {image,title,price,category} = item;
+    const { image,title,price,category,id } = item;
+    const { handleAdd } = useCartContext();
 
   return (
     <>
@@ -20,7 +22,7 @@ const ItemList = (item) => {
 
             <div className='items__buttons'>
                 <button className='items__btn-details' onClick={()=>setOpen(!open)}>Buy Now</button>
-                <button className='items__btn-add'>Add Product</button>
+                <button className='items__btn-add' onClick={()=> handleAdd(id)}>Add Product</button>
             </div>
         </div>
 

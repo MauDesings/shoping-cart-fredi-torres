@@ -13,7 +13,7 @@ const AppProduct = ({greeting}) => {
         <h2 className='title'>{greeting}</h2>
         <div className='items-content-grid'>
           {
-            data.map(item => (
+            data.productData.map(item => (
               <ItemList key={item.id} {...item} />
             ))
           }

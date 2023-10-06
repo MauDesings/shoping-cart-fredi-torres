@@ -8,7 +8,7 @@ const CategoriesProductList = () => {
 
     if (isLoading) return <h2 className='items__description'>CARGANDO....</h2>
 
-    const categoryFilter = data.filter(item => item.category.toLowerCase() === categoryId.toLowerCase());
+    const categoryFilter = data.productData.filter(item => item.category.toLowerCase() === categoryId.toLowerCase());
     
   return (
        <div className='items-content-grid'>

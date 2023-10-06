@@ -52,10 +52,12 @@
     cursor: pointer;
 }
 
-/* .items__btn-details{
-    color: rgba(255, 255, 255, 0.87);
-    background-color:rgba(245, 94, 67, 0.829);
-} */
+.items__btn-add:hover,
+.items__btn-details:hover{
+    opacity: 0.8;
+    transition: .3s ease;
+}
+
 
 .items__buttons{
     display: flex;
