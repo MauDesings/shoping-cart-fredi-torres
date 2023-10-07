@@ -21,7 +21,7 @@ const ItemList = (item) => {
             </div>
 
             <div className='items__buttons'>
-                <button className='items__btn-details' onClick={()=>setOpen(!open)}>Buy Now</button>
+                <button className='items__btn-details' onClick={()=>setOpen(!open)}>More Info</button>
                 <button className='items__btn-add' onClick={()=> handleAdd(id)}>Add Product</button>
             </div>
         </div>

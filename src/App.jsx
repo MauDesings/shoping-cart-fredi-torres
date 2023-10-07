@@ -10,7 +10,7 @@ import CategoriesProductList from './pages/categoryProductList/CategoriesProduct
 import AppCategories from './pages/categories/AppCategories'
 
 function App() {
-    const greeting = 'Welcome';
+    const greeting = 'Welcome to';
 
   return (
     <>
@@ -23,9 +23,9 @@ function App() {
     
                 <div className='container'>
                     <Routes>
-                        <Route exact path="/" element={<AppHome />} />
+                        <Route exact path="/" element={<AppHome greeting={greeting} />} />
                         <Route exact path="/categories" element={<AppCategories />} />
-                        <Route exact path="/product" element={<AppProduct greeting={greeting} />} />
+                        <Route exact path="/product" element={<AppProduct />} />
                         <Route exact path="/category/:categoryId" element={<CategoriesProductList />} />
 
                         <Route exact path="/contact" element={<AppContact />} />

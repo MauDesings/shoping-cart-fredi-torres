@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='footer__content container'>
             <div className='footer__info'>
                 <h2 className="footer__subtitle">Mau Desings</h2>
-                <h3 className='footer__reserved'>&copy; All rights reserved</h3>
+                <h3 className='footer__reserved'>Copyright &copy; 2023 All rights reserved</h3>
             </div>
            
             <div className="footer__sociales">
