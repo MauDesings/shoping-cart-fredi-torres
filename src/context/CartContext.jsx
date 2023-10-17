@@ -103,7 +103,7 @@ const CartProvider = ({children}) => {
     // SEND FORM
     function sendForm() {
         Swal.fire(
-            'thank you!',
+            'thank you!!',
             'successful purchase',
             'success'
           )
