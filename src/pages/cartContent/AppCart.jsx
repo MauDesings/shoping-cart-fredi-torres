@@ -2,10 +2,12 @@ import React from 'react'
 import ItemCart from '../../components/itemCart/ItemCart'
 import { useCartContext } from '../../context/CartContext'
 import './appCart.css'
+import { NavLink } from 'react-router-dom'
 
 const AppCart = () => {
     const { state, clearCart } = useCartContext();
     const totalItemsCart = state.totalItems > 1 ? `${state.totalItems} items` : `${state.totalItems} item`;
+
 
     return (
         <ul className='cart__content'>
@@ -28,9 +30,14 @@ const AppCart = () => {
                 <button 
                     type="button" 
                     className="cart__nav-btn-clear"
-                    onClick={clearCart}
-                    >Clear Cart</button>
+                    onClick={clearCart}> 
+                    Clear Cart
+                </button>
 
+                <NavLink to='/checkout'>
+                <button type='button' className='cart__nav-btn-checkout' >Go to Checkout </button>
+                </NavLink>    
+            
                 <p className='cart__nav-total'>TOTAL:<span className="span-total">$ {state.totalPrice}</span></p>  
             </li>
         </ul>

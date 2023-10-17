@@ -90,6 +90,14 @@ export function cartReducer(state,action) {
             }
         }
 
+        case 'VALUE_INPUT_CHECKOUT':{
+            const {name, value} = action.payload;
+            return {
+                ...state,
+                user: {...state.user, [name]: value},
+            }
+        }
+
         default:
             return state;
     }

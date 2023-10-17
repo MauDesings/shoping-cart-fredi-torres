@@ -22,7 +22,7 @@
   padding: 25px 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 }
@@ -57,15 +57,12 @@
     min-height: calc(100vh - 188px);
   }
 
+  .footer__content{
+    justify-content: space-between;
+  }
+
   .footer__sociales{
     gap: 30px;
     margin: 0;
-  }
-
-  .footer__info{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 }

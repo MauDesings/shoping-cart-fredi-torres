@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer'
 import AppCart from './pages/cartContent/AppCart'
 import CategoriesProductList from './pages/categoryProductList/CategoriesProductList'
 import AppCategories from './pages/categories/AppCategories'
+import AppCheckout from './pages/checkout/AppCheckout'
 
 function App() {
     const greeting = 'Welcome to';
@@ -30,6 +31,7 @@ function App() {
 
                         <Route exact path="/contact" element={<AppContact />} />
                         <Route exact path="/cart" element={<AppCart />} />
+                        <Route exact path="/checkout" element={<AppCheckout />} />
                     </Routes>
                 </div>
 

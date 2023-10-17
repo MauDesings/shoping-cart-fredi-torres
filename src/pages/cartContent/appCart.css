@@ -38,7 +38,7 @@
     font-weight: 600;
 }
 
-.cart__nav-btn-clear{
+.cart__nav-btn-clear, .cart__nav-btn-checkout{
     width: 120px;
     background-color: #343a40;
     color: #f8f9fa;
@@ -49,6 +49,15 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.cart__nav-btn-checkout{
+    width: 180px;
+    background-color: rgb(245, 94, 67);
+}
+
+.cart__nav-btn-checkout:hover{
+    background-color: rgb(235, 135, 118);
 }
 
 .cart__nav-body{

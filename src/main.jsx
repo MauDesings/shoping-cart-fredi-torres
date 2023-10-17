@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { AppProvider } from './context/ProductContext.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import './index.css'
+import { app } from './hooks/config.js'
+console.log(app)
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

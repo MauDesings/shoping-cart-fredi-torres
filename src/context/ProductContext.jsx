@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import product from '../mocks/product.json';
-
+import { collection, getDocs, getFirestore } from 'firebase/firestore'
 
 const AppContext = createContext();
 
@@ -8,24 +7,22 @@ const AppProvider = ({children}) => {
     const [data, setData] = useState( {productData:[], featureProducts: []} );
     const [isLoading, setIsLoading] = useState(true);
 
-    function productPromise(apimonck) {
-        return new Promise(resolve => setTimeout(() =>  resolve(apimonck) , 1000))
-    }
-
-    // OBTENER LOS PRODUCTOS 
     useEffect(()=>{
-        async function getProducts(product) {
+        async function fetchData() {
             try {
-                const response = await productPromise(product);
-                const featureData = response.filter(item=> item.featured === true)
-                setData((prev)=> ({...prev, productData: response}));
+                const db = getFirestore();
+                const querySnapShop = await getDocs(collection(db,'products'));
+                const newData = querySnapShop.docs.map((doc)=> ({id: doc.id, ...doc.data()}))
+                const featureData = newData.filter(item=> item.featured === true)
+                
+                setData((prev)=> ({...prev, productData: newData}));
                 setData((prev)=> ({...prev, featureProducts: featureData}));
                 setIsLoading(!isLoading);
             } catch (error) {
-                console.log(error);
+                console.log(error)
             }
         }
-        getProducts(product);
+        fetchData();
     },[])
 
 
@@ -36,7 +33,7 @@ const AppProvider = ({children}) => {
     }
     const categoryOnlyData = getUniqueData(data, 'category');  
 
-
+    
   return (
     <AppContext.Provider value={{ data, isLoading, categoryOnlyData }}>
         {children}
