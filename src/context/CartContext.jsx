@@ -1,12 +1,16 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useEffect, useReducer, useState } from 'react'
 import { useProductContext } from './ProductContext';
 import { cartReducer } from '../reducer/cartReducer';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import validation from '../hooks/validation';
 import Swal from 'sweetalert2';
 
+function getLocalCartData() {
+    return JSON.parse(localStorage.getItem('cart-item')) || [];
+}
 
 const initialState = {
-    cart : [],
+    cart : getLocalCartData(),
     totalItems: 0,
     totalPrice: 0,
     user: {name:'', email:'', fhone:'', addres:''}
@@ -17,14 +21,36 @@ const CartContext = createContext();
 const CartProvider = ({children}) => {
     const {data} = useProductContext();
     const [state,dispach] = useReducer(cartReducer,initialState);
+    const [errors,setErrors] = useState({}); // para el form de checkout
 
-    function handleAdd(id) {
-        dispach({
-            type: 'ADD_TO_CART',
-            payload: {data, id}
-        })
-        handleItemsTotal();
-        handlePricetotal();
+
+    function handleAdd(id,amount,setAmount) {
+        if (amount > 0) {
+            dispach({
+                type: 'ADD_TO_CART',
+                payload: {data, id, amount}
+            })
+            setAmount(0);
+            handleItemsTotal();
+            handlePricetotal();
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Agregado al carrito',
+                showConfirmButton: false,
+                timer: 1400
+              })
+              return;
+        } 
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'warning',
+            title: 'Elija una cantidad',
+            showConfirmButton: false,
+            timer: 1400
+          })
     }
     
 
@@ -76,7 +102,7 @@ const CartProvider = ({children}) => {
     }
 
     
-    // UPDATE VALUE INPUTS
+    // GET VALUE INPUTS
     function handleInputChange(e) {
         const {name,value} = e.target;
         dispach({type:'VALUE_INPUT_CHECKOUT', payload: {name,value}})
@@ -90,27 +116,56 @@ const CartProvider = ({children}) => {
         total: state.totalPrice
     }
 
-     // ADD ORDER FIRESTORE 
+    // ADD ORDER FIRESTORE 
     function handleAddOrder() {
         const db = getFirestore();
         const orderCollection = collection(db, 'orders');
         addDoc(orderCollection, order)
         .then(({id})=> console.log(id)) 
-
-        clearCart();
     }
+
 
     // SEND FORM
-    function sendForm() {
-        Swal.fire(
-            'thank you!!',
-            'successful purchase',
-            'success'
-          )
+    function sendForm(e) {
+        e.preventDefault();
+        setErrors(validation(state.user))
     }
 
+    // si no hay errores en el form se enviaran los datos a fireStore
+    useEffect(()=>{
+        const {name,email,fhone,addres} = state.user;
+        if (Object.keys(errors).length === 0 && (name !== '' && email !== '' && fhone !== '' && addres !== '')) {
+            Swal.fire(
+                'Gracias!',
+                'Compra exitosa',
+                'success'
+              )
+              dispach({type:'RESET_FORM'})
+              handleAddOrder();
+              clearCart();
+        }
+    },[errors])
+
+
+    // ADD LOCAL STORAGE
+    useEffect(()=>{
+        localStorage.setItem('cart-item', JSON.stringify(state.cart));
+    },[state.cart]);
+
   return (
-    <CartContext.Provider value={{state, handleAdd, handleDeleted, handleIncrement, handleDecrement, clearCart, handleInputChange, handleAddOrder, sendForm}}>
+    <CartContext.Provider value={
+       {
+        state,
+        handleAdd,
+        handleDeleted,
+        handleIncrement,
+        handleDecrement,
+        clearCart, 
+        handleInputChange,
+        handleAddOrder,
+        sendForm,
+        errors }}>
+
         {children}
     </CartContext.Provider>
   )

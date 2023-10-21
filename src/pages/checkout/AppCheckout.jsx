@@ -3,40 +3,38 @@ import { useCartContext } from '../../context/CartContext';
 import './appCheckout.css'
 
 const AppCheckout = () => {
-    const { state, handleInputChange, handleAddOrder, sendForm } = useCartContext();
+    const { state, handleInputChange, sendForm, errors } = useCartContext();
+
     
-
-    function handleForm(e) {
-        e.preventDefault();
-        handleAddOrder();
-        sendForm();
-    }
-
   return (
-    <div className='column'>
-        <h2 className='sub-title'>Formulario</h2>
-        <form className='form' onSubmit={handleForm}>
+    <div className='column-form'>
+        <h2 className='sub-title'>Completa el formulario</h2>
+        <form className='form' onSubmit={sendForm}>
             <div className='form__group'>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Nombre</label>
                 <input type="text" id='name' name='name' value={state.user.name} onChange={handleInputChange} />
+                {errors.name ? <p className='danger'>{errors.name}</p> : <p className='error'>error</p>}
             </div>
 
             <div className='form__group'>
                 <label htmlFor="email">Email</label>
                 <input type="text" id='email' name='email' value={state.user.email} onChange={handleInputChange} />
+                {errors.email ? <p className='danger'>{errors.email}</p> : <p className='error'>error</p>}
             </div>
 
             <div className='form__group'>
-                <label htmlFor="fhone">Fhone</label>
+                <label htmlFor="fhone">Teléfono</label>
                 <input type="text" id='fhone' name='fhone' value={state.user.fhone} onChange={handleInputChange} />
+                {errors.fhone ? <p className='danger'>{errors.fhone}</p> : <p className='error'>error</p>}
             </div>
             
             <div className='form__group'>
-                <label htmlFor="addres">Addres</label>
-                <input type="password" id='addres' name='addres' value={state.user.addres} onChange={handleInputChange} />
+                <label htmlFor="addres">Dirección</label>
+                <input type="text" id='addres' name='addres' value={state.user.addres} onChange={handleInputChange} />
+                {errors.addres ? <p className='danger'>{errors.addres}</p> : <p className='error'>error</p>}
             </div>
 
-            <button type='submit'>Continue</button>
+            <button className={state.cart.length ? 'confirm' : 'confirm disab'} type='submit'  disabled={state.cart.length ? '' : 'disabled '}>Confirmar compra</button>
         </form>
     </div>
   )

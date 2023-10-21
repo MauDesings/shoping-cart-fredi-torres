@@ -2,7 +2,7 @@ export function cartReducer(state,action) {
     switch (action.type) {
 
         case 'ADD_TO_CART': {
-            const {data,id} = action.payload;
+            const {data,id,amount} = action.payload;
             const newItem = data.productData.find(item => item.id === id);
             const existe = state.cart.some(item=> item.id === newItem.id);
 
@@ -10,13 +10,13 @@ export function cartReducer(state,action) {
             return existe ?
                 { ...state,
                     cart: state.cart.map(item => item.id === newItem.id 
-                        ? {...item , quantity: item.quantity + 1}
+                        ? {...item , quantity: item.quantity + amount}
                         : item )
                 } :
 
                 {
                     ...state,
-                    cart: [...state.cart, {...newItem, quantity: 1}]
+                    cart: [...state.cart, {...newItem, quantity: amount}]
                 }
         }
 
@@ -95,6 +95,13 @@ export function cartReducer(state,action) {
             return {
                 ...state,
                 user: {...state.user, [name]: value},
+            }
+        }
+
+        case 'RESET_FORM':{
+            return {
+                ...state,
+                user: {name:'', email:'', fhone:'', addres:''}
             }
         }
 

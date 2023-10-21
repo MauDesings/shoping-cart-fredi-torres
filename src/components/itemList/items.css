@@ -7,11 +7,9 @@
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
-    /* border: 1px solid #8b8989b4; */
     display: grid;
     padding: 15px;
     background-color:#fff;
-    /* background: #3a3939d5; */
 }
 
 .items__info{
@@ -29,7 +27,6 @@
 .items__subtitle{
     font-size: 2rem;
     color: #343a40;
-    /* color: #f8f9fa; */
 }
 
 .items__price{
@@ -50,6 +47,10 @@
     color: #f8f9fa;
     font-size: 1.6rem;
     cursor: pointer;
+}
+
+.items__btn-details{
+    width: 90%;
 }
 
 .items__btn-add:hover,

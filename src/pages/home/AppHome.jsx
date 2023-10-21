@@ -20,11 +20,11 @@ const AppHome = ({greeting}) => {
                 <h1 className='title-home'>Mau Store</h1>
                 <p className='paragraph-home'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel odit iste vero numquam fugiat, soluta libero esse voluptatum molestiae modi.</p>
                 <NavLink to='/product'>
-                    <button className='btn-home'>SHOW NOW</button>
+                    <button className='btn-home'>MOSTRAR AHORA</button>
                 </NavLink>
             </div>
        
-            <h2 className='title feature'>Feature Products</h2>
+            <h2 className='title feature'>Productos Destacados</h2>
             <div className='items-content-grid'>
                 {
                 data.featureProducts.map(item => (
@@ -34,25 +34,25 @@ const AppHome = ({greeting}) => {
             </div>
 
             <div className='content-services'>
-                <h2 className='title services'>Why Choose Us</h2>
+                <h2 className='title services'>Por qué elegirnos</h2>
                 <div className='items-content-grid content-services'>
                     <CardsServices 
-                    title='Worldwide Shipping' 
+                    title='Envío al mundo entero' 
                     description='We offer worldwide shipping to make our products accessible to customers all over the world.'
                     imagge={<SvgWorld />} />
 
                     <CardsServices 
-                    title='Best Quality' 
+                    title='Mejor calidad' 
                     description='We believe in providing our customers with only the best quality products.'
                     imagge={<SvgQuality />} />
 
                     <CardsServices 
-                    title='Best Offers' 
+                    title='Mejores ofertas' 
                     description='We pride ourselves on offering the best deals and discounts to our customers.' 
                     imagge={<SvgOffers />} />
 
                     <CardsServices 
-                    title='Secure Payments' 
+                    title='Pagos seguros' 
                     description='We offer a range of secure payment options to ensure that your transactions are safe and secure'
                     imagge={<SvgSecure />} />
                 </div>
