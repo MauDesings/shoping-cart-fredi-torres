@@ -71,7 +71,3 @@ El hook `useReducer` se utiliza para gestionar acciones complejas en la aplicaci
 
 ---
 
-¡Puedes probar la aplicación en línea visitando [la tienda en línea](enlace-a-tu-aplicacion)!
-
----
-[Enlace a la interfaz de usuario]()

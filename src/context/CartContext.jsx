@@ -23,7 +23,6 @@ const CartProvider = ({children}) => {
     const [state,dispach] = useReducer(cartReducer,initialState);
     const [errors,setErrors] = useState({}); // para el form de checkout
 
-
     function handleAdd(id,amount,setAmount) {
         if (amount > 0) {
             dispach({
