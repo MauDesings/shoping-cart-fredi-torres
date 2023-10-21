@@ -10,7 +10,7 @@ const AppProduct = () => {
 
   return (
     <>
-        <h2 className='title'>Products</h2>
+        <h2 className='title'>Productos</h2>
         <div className='items-content-grid'>
           {
             data.productData.map(item => (

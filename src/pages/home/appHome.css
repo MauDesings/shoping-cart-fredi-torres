@@ -17,11 +17,13 @@
     background-position: center;
     z-index: -1;
 } 
+
 .subtitle-home{
     font-size: 3rem;
     font-weight: 300;
     padding-top: 50px;
 }
+
 .title-home{
     font-size: 4.3rem;
 }
@@ -47,4 +49,15 @@
 .btn-home:hover{
     background-color:rgb(238, 128, 111) ;
     border: 1px solid #494747de;
+}
+
+@media (min-width: 750px){
+    .title-home{
+        font-size: 5rem;
+        margin: 20px 0 30px;
+    }
+
+    .btn-home{
+        margin-top: 40px;
+    }
 }

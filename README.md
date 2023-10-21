@@ -6,7 +6,7 @@
 
 "Mau Store" es una aplicación web construida con React que permite a los usuarios explorar y comprar ropa para dama, caballero y niños.
 
-![Captura de Pantalla](./src/assets/produc.jpg)
+![Captura de Pantalla](./src/assets/product.jpg)
 
 ## Los usuarios pueden:
 

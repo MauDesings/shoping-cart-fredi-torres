@@ -4,6 +4,7 @@ import bgPattern from '../../assets/bgPattern.svg'
 import NavLinks from './NavLinks'
 import CartWidget from '../cartWidget/CartWidget'
 import { NavLink } from 'react-router-dom'
+import logo from '../../assets/logo.png';
 import './navBar.css'
 
 
@@ -13,10 +14,12 @@ const Navbar = () => {
   return (
     <nav className='container nav'>
         <RiMenuFill className='icon'onClick={()=> setOpenMenu(!openMenu)} />
+        <img src={logo} className='logo-img' alt="imagge-logo" />
 
         <div className={ openMenu ? 'menu-modal opacity' : 'menu-modal' }>
             <ul className={ openMenu ? 'menu-links open' : 'menu-links' }
                 onClick={()=> setOpenMenu(!openMenu)}>
+                <span className='menu-logo'>MAU STORE</span>
                 <NavLinks />
                 <RiCloseFill className='icon icon-close' />
                 <img className='bg' src={bgPattern} alt="image-circle" />
