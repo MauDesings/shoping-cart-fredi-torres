@@ -28,7 +28,7 @@ const AppCart = () => {
 
                         <li className='cart__nav-footer-flex'>
                                 <NavLink to='/product' className='back-link'>
-                                    <button className='cart__nav-btn-back'> <AiOutlineRollback /> Back</button>
+                                    <button className='cart__nav-btn-back'> <AiOutlineRollback /> Atrás</button>
                                 </NavLink>
                                 <button type="button" className="cart__nav-btn-clear" onClick={clearCart}> 
                                 Vaciar carrito
@@ -51,7 +51,7 @@ const AppCart = () => {
                     <div className='cart__content-empty'>
                         <h5 className='cart__nav-empty-cart'>Tu carrito esta vacío</h5>
                         <NavLink to='/product' className='back-link'>
-                            <button className='cart__nav-btn-back'> <AiOutlineRollback /> Volver </button>
+                            <button className='cart__nav-btn-back'> <AiOutlineRollback /> Ir a productos </button>
                         </NavLink> 
                     </div> )
             }
