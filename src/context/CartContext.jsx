@@ -149,6 +149,8 @@ const CartProvider = ({children}) => {
     // ADD LOCAL STORAGE
     useEffect(()=>{
         localStorage.setItem('cart-item', JSON.stringify(state.cart));
+        handleItemsTotal();
+        handlePricetotal();
     },[state.cart]);
 
   return (
