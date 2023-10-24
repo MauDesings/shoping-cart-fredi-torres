@@ -4,8 +4,8 @@ import ItemList from '../../components/itemList/ItemList';
 import './appHome.css'
 import { NavLink } from 'react-router-dom';
 import CardsServices from '../../components/cardsServices/CardsServices';
-import SvgWorld from '../../components/svg/svgWorld';
-import SvgQuality from '../../components/svg/svgQuality';
+import SvgWorld from '../../components/svg/SvgWorld';
+import SvgQuality from '../../components/svg/SvgQuality';
 import SvgOffers from '../../components/svg/SvgOffers';
 import SvgSecure from '../../components/svg/SvgSecure';
 
