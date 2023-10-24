@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border-bottom: 1px  solid rgba(255, 255, 255, 0.521); */
     padding: 20px 0;
 }
 
@@ -120,7 +119,6 @@
     color: #ffffffb0;
     font-size: 2.5rem;
     font-weight: bold;
-    /* text-align: center; */
     transform: translate(-50%, -50%);
     top: 5%;
     left: 50%;
