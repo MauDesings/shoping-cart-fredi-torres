@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import ProductModal from '../productInfoModal/ProductModal';
-import { useCartContext } from '../../context/CartContext';
 import './items.css'
 
 
