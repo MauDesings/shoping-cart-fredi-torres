@@ -4,9 +4,16 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore'
 const AppContext = createContext();
 
 const AppProvider = ({children}) => {
+    const [openMenu, setOpenMenu] = useState(false);
     const [data, setData] = useState( {productData:[], featureProducts: []} );
     const [isLoading, setIsLoading] = useState(true);
 
+    function handleOpen() {
+        setOpenMenu(!openMenu);
+    }
+
+
+    // obtener los productos almacenados en firebase
     useEffect(()=>{
         async function fetchData() {
             try {
@@ -35,7 +42,7 @@ const AppProvider = ({children}) => {
 
     
   return (
-    <AppContext.Provider value={{ data, isLoading, categoryOnlyData }}>
+    <AppContext.Provider value={{openMenu, handleOpen, data, isLoading, categoryOnlyData }}>
         {children}
     </AppContext.Provider>
   )
